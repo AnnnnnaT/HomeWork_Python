@@ -13,7 +13,7 @@
 # ]
 # for i in range(8):
 #     a = not (x_y_z[i][0] or x_y_z[i][1] or x_y_z[i][2])
-#     b = not (x_y_z[i][0] or x_y_z[i][1] or x_y_z[i][2])
+#     b = not (x_y_z[i][0]) and not (x_y_z[i][1]) and not (x_y_z[i][2])
 #     if a != b:
 #         print('Выражение: ¬(X ⋁ Y ⋁ Z) = ¬X ⋀ ¬Y ⋀ ¬Z - False')
 #         break
