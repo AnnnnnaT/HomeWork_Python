@@ -10,25 +10,21 @@
 #     print('Введено значение вне заданного диапозона')
 
 # Заполнить список змейкой
-n = int(input())
-m = int(input())
-value = 0
-mas = []
-for i in range(n):
-    mas_str = []
-    if i%2==0: 
-        for j in range(m):
-            mas_str.append(value)
-            value+=1
-        mas.append(mas_str)
-    else:
-        for j in range(m):
-            mas_str.append(value)
-            value+=1
-        mas_str.reverse()    
-        mas.append(mas_str)             
+# n = int(input())
+# m = int(input())
+# value = 0
+# mas = []
+# for i in range(n):
+#     mas_str = []
+#     if i%2==0: 
+#         for j in range(m):
+#             mas_str.append(value)
+#             value+=1
+#         mas.append(mas_str)
+#     else:
+#         for j in range(m):
+#             mas_str.append(value)
+#             value+=1
+#         mas_str.reverse()    
+#         mas.append(mas_str)             
 
-for i in range(n):
-    for j in range(m):
-        print(mas[i][j], end=' ')
-    print()   
