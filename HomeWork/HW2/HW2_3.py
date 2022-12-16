@@ -9,6 +9,7 @@ import random
 # first_list = [random.randint(value_min, value_max) for _ in range(n)]
 
 # Создаем упорядоченный список двузначных элементов (другой способ решения)
+# подобное делала на С#
 first_list = list(range(10, 100))
 second_list = first_list.copy()
 for i in range(len(second_list)):

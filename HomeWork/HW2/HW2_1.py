@@ -2,8 +2,8 @@
 
 num = input("Введите число: ")
 total = 0
-for i in num:
-    if i != '.':
-        total += int(i)
+for item in num:
+    if item != '.' and item != ',':
+        total += int(item)
 print(f'{num} -> {total}')
 
