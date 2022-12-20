@@ -9,5 +9,5 @@ fractional_part = []
 for item in num_list:
     if isinstance(item, float):
         fractional_part.append(item % 1)
-result = max(fractional_part) - min(fractional_part)
-print(f'Созданный список: {num_list}.\nРазница между максимальной и минимальной дробной частью: {round(result, 2)}')
+result = round(max(fractional_part) - min(fractional_part), 2)
+print(f'Созданный список: {num_list}.\nРазница между максимальной и минимальной дробной частью: {result}')
