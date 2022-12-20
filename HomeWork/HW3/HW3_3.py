@@ -1,0 +1,13 @@
+# Задайте список из вещественных чисел. Напишите программу, которая найдёт разницу
+# между максимальным и минимальным значением дробной части элементов, отличной от 0.
+
+from random import *
+
+# num_list = [1.1, 1.2, 3.1, 5, 10.01]
+num_list = [round(uniform(1.0, 10.5), 2) for _ in range(randint(4, 10))]
+fractional_part = []
+for item in num_list:
+    if isinstance(item, float):
+        fractional_part.append(item % 1)
+result = max(fractional_part) - min(fractional_part)
+print(f'Созданный список: {num_list}.\nРазница между максимальной и минимальной дробной частью: {round(result, 2)}')
