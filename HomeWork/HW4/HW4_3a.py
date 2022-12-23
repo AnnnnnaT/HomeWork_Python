@@ -50,9 +50,9 @@ print(polynomial1)
 print(polynomial2)
 
 with open('file1.txt', 'w', encoding='UTF-8') as polynomial:
-    polynomial.write('\nСозданный многочлен: ')
+    polynomial.write('Созданный многочлен: ')
     polynomial.write(polynomial1)
 with open('file2.txt', 'w', encoding='UTF-8') as polynomial:
-    polynomial.write('\nСозданный многочлен: ')
+    polynomial.write('Созданный многочлен: ')
     polynomial.write(polynomial2)
 
