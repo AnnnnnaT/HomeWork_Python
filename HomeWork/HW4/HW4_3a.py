@@ -4,7 +4,6 @@
 
 from random import randint as ri
 
-
 def create_pretty_degree(degree):
     sym_dict = {
         0: "\u2070", 1: "\u00B9", 2: "\u00B2", 3: "\u00B3", 4: "\u2074",
