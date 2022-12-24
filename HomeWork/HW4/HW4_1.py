@@ -6,10 +6,13 @@ def isPrime(num):
         d += 1
     return d * d > num
 
-n = int(input('Введите натуральное число: '))
+n = 12376
 num_list = []
 for i in range(2, int(n ** 0.5) + 1):
     if isPrime(i):
         if n % i == 0:
             num_list.append(i)
-print(f'Простые множители числа {n} -> {num_list}')
+print(f'Простые множители числа {n} ->', end=" ")
+print(*num_list)
+
+
