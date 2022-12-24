@@ -1,3 +1,19 @@
+def create_degree(degree):
+    sym_dict = {1: "\u00B9", 2: "\u00B2", 3: "\u00B3", 4: "\u2074", 5: "\u2075", 6: "\u2076", 7: "\u2077", 8: "\u2078", 9: "\u2079"}
+    pretty_degree = ''
+    while degree:
+        pretty_degree = sym_dict[degree % 10] + pretty_degree
+        degree //= 10
+    return pretty_degree
+
+x = 'x' + create_degree(3)
+print(x)
+
+
+
+
+
+
 # a, b, c = map(int, input().split())
 #
 # if a >= b >= c:
@@ -12,21 +28,3 @@
 #     max_num, mid_num, min_num = c, b, a
 #
 # print(f'{max_num}\n{min_num}\n{mid_num}')
-
-# def isPrime(num):
-#     d = 2
-#     while d * d <= num and num % d != 0:
-#         d += 1
-#     return d * d > num
-#
-# n = int(input('Введите натуральное число: '))
-# num_list = []
-# for i in range(2, int(n ** 0.5) + 1):
-#     if isPrime(i):
-#         if n % i == 0:
-#             num_list.append(i)
-# print(f'Простые множители числа {n} -> {num_list}')
-
-# num_list = [1, 2, 3, 4, 3, 2, 1]
-# print(list(set(num_list)))
-
