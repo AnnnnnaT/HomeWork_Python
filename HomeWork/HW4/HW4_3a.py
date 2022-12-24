@@ -1,9 +1,9 @@
 # Задана натуральная степень k. Сформировать случайным образом список коэффициентов
-# (значения от 0 до 100) многочлена и записать в файл многочлен степени k
+# (значения от -100 до 100) многочлена и записать в файл многочлен степени k
 # если k = 2, то многочлены могут быть => 2*x² + 4*x + 5 = 0 или x² + 5 = 0 или 10*x² = 0
 
 from random import randint as ri
-k1, k2 = map(int, input('Введите степень числа для первого и второго многочленов через пробел: ').split())
+
 
 def create_pretty_degree(degree):
     sym_dict = {
@@ -15,7 +15,6 @@ def create_pretty_degree(degree):
         pretty_degree = sym_dict[degree % 10] + pretty_degree
         degree //= 10
     return pretty_degree
-
 
 def create_monomials(degree):
     degree_dict = {}
@@ -53,12 +52,22 @@ def create_polynomial(monomials_list):
     polynomial += ' = 0'
     return polynomial
 
+while True:
+    try:
+        k1, k2 = map(int, input('Введите степени числа для первого и второго многочленов через пробел: ').split())
+        if k1 <= 0 or k2 <= 0:
+            print('Введите степени числа больше 0!')
+        else:
+            break
+    except:
+        print('Конвертация невозможна! Введите числа больше 0.')
+
 monomials_list1 = create_monomials(k1)
 monomials_list2 = create_monomials(k2)
 polynomial1 = create_polynomial(monomials_list1)
 polynomial2 = create_polynomial(monomials_list2)
-print(polynomial1)
-print(polynomial2)
+print(f'Первый многочлен: {polynomial1}')
+print(f'Второй многочлен: {polynomial2}')
 
 with open('file1.txt', 'w', encoding='UTF-8') as polynomial:
     polynomial.write('Первый многочлен: ')
@@ -66,4 +75,3 @@ with open('file1.txt', 'w', encoding='UTF-8') as polynomial:
 with open('file2.txt', 'w', encoding='UTF-8') as polynomial:
     polynomial.write('Второй многочлен: ')
     polynomial.write(polynomial2)
-
