@@ -26,7 +26,7 @@ def create_monomials(degree):
 
     monomials_list = []
     for i in degree_dict:
-        koef = ri(-100, 100)
+        koef = ri(-10, 10)
         if i == 0 and koef not in [-1, 0, 1]:
             elem = str(koef)
             monomials_list.append(elem)
