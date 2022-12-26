@@ -1,6 +1,5 @@
 polynomial1 = '60x⁵ - 9x⁴ + 3x³ + x² + 10x - 7 = 0'
-polynomial2 = '4x¹¹ - x⁸ + x⁷ + 8x⁶ - 4x⁵ - 23x⁴ + 10x² + 4x - 3 = 0'
-
+polynomial2 = '4x¹¹ - x⁸ + x⁷ + 8x⁶ - 4x⁵ - 23x⁴ + 10x² = 0'
 
 def create_simple_monomials(polynomial: str):
     sym_dict = {
@@ -8,30 +7,16 @@ def create_simple_monomials(polynomial: str):
         5: "\u2075", 6: "\u2076", 7: "\u2077", 8: "\u2078", 9: "\u2079"
     }
 
-    polynomial = polynomial.replace('+ ', '').replace(' - ', ' -').replace('= 0', '')
+    polynomial = polynomial.replace('x ', 'x1 ').replace(' x', ' 1x')\
+        .replace('+ ', '').replace(' - ', ' -').replace('= 0', '')
     monomials_list = polynomial.split()
+    if 'x' not in monomials_list[-1]:
+        monomials_list[-1] = monomials_list[-1] + 'x0'
 
-    if 'x' in monomials_list[-1]:
-        monomials_list[-1] = monomials_list[-1].replace('x', 'x1')
-        monomials_list.append('0x0')
-    else:
-        monomials_list[-1] = monomials_list[-1].replace(monomials_list[-1], (monomials_list[-1] + 'x0'))
-
-    if monomials_list[-2][-1] == 'x':
-        monomials_list[-2] = monomials_list[-2].replace('x', 'x1')
-
-    for i in range(len(monomials_list) - 1):
-        if monomials_list[i].startswith('-x'):
-            monomials_list[i] = '-1' + monomials_list[i][1:]
-        elif monomials_list[i].startswith('x'):
-            monomials_list[i] = '1' + monomials_list[i]
-
-    for i in range(len(monomials_list)):
-        for j in range(1, len(monomials_list[i])):
-            for key, value in sym_dict.items():
-                if monomials_list[i][j - 1] == 'x':
-                    if monomials_list[i][j] == value:
-                        monomials_list[i] = monomials_list[i].replace(monomials_list[i][j], str(key))
+    for k in sym_dict:
+        for i in range(len(monomials_list)):
+            while sym_dict[k] in monomials_list[i]:
+                monomials_list[i] = monomials_list[i].replace(sym_dict[k], str(k))
     return monomials_list
 
 
@@ -48,13 +33,10 @@ def dict_koef_degree(monomials_list):
 
 
 def sum_koef(koef_degree1: dict, koef_degree2: dict):
-    sum_koef = {}
-    max_degree = max(max(koef_degree1), max(koef_degree2))
-    for i in range((max_degree + 1), -1, -1):
-        value = koef_degree1.get(i, 0) + koef_degree2.get(i, 0)
-        if value != 0:
-            sum_koef[i] = value
-    return sum_koef
+    sum_koef_dict = koef_degree1 | koef_degree2
+    for i in sum_koef_dict:
+        sum_koef_dict[i] = koef_degree1.get(i, 0) + koef_degree2.get(i, 0)
+    return sum_koef_dict
 
 def create_pretty_degree(sum_koef: dict):
     sym_dict = {
@@ -69,11 +51,10 @@ def create_pretty_degree(sum_koef: dict):
             degree_dict[degree] = sym_dict[degree // 10] + sym_dict[degree % 10]
     return degree_dict
 
-
 def create_sum_polynomial(sum_koef: dict):
     polynomial_list = []
     pretty_degree = create_pretty_degree(sum_koef)
-    for i in sum_koef:
+    for i in sorted(sum_koef, reverse=True):
         if i != 0:
             elem = str(sum_koef[i]) + 'x' + pretty_degree[i]
             polynomial_list.append(elem)
@@ -85,7 +66,7 @@ def create_sum_polynomial(sum_koef: dict):
             polynomial_list[i] = polynomial_list[i].replace('1x', 'x')
         if polynomial_list[i].endswith('x' + pretty_degree[1]):
             polynomial_list[i] = polynomial_list[i].replace('x' + pretty_degree[1], 'x')
-
+    
     polynomial = polynomial_list[0]
     for i in range(1, len(polynomial_list)):
         if polynomial_list[i].startswith('-'):
@@ -95,6 +76,7 @@ def create_sum_polynomial(sum_koef: dict):
     polynomial += ' = 0'
     return polynomial
 
+sum_koef_dict = {}
 print(polynomial1)
 print(polynomial2)
 koef_degree1 = dict_koef_degree(create_simple_monomials(polynomial1))
