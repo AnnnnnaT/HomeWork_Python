@@ -76,7 +76,6 @@ def create_sum_polynomial(sum_koef: dict):
     polynomial += ' = 0'
     return polynomial
 
-sum_koef_dict = {}
 print(polynomial1)
 print(polynomial2)
 koef_degree1 = dict_koef_degree(create_simple_monomials(polynomial1))
@@ -84,6 +83,6 @@ koef_degree2 = dict_koef_degree(create_simple_monomials(polynomial2))
 sum_polynomial = create_sum_polynomial(sum_koef(koef_degree1, koef_degree2))
 print(sum_polynomial)
 
-# 60x⁵ - 9x⁴ + 3x³ + x² + 10x = 0
-# 4x¹¹ - x⁸ + x⁷ + 8x⁶ - 4x⁵ - 23x⁴ - 87x³ + 10x² + 4x - 3 = 0
-# 4x¹¹ - x⁸ + x⁷ + 8x⁶ + 56x⁵ - 32x⁴ - 84x³ + 11x² + 14x - 3 = 0
+# 60x⁵ - 9x⁴ + 3x³ + x² + 10x - 7 = 0
+# 4x¹¹ - x⁸ + x⁷ + 8x⁶ - 4x⁵ - 23x⁴ + 10x² = 0
+# 4x¹¹ - x⁸ + x⁷ + 8x⁶ + 56x⁵ - 32x⁴ + 3x³ + 11x² + 10x - 7 = 0
