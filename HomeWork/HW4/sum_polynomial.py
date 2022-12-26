@@ -1,4 +1,4 @@
-polynomial1 = '60x⁵ - 9x⁴ + 3x³ + x² + 10x = 0'
+polynomial1 = '60x⁵ - 9x⁴ + 3x³ + x² + 10x - 7 = 0'
 polynomial2 = '4x¹¹ - x⁸ + x⁷ + 8x⁶ - 4x⁵ - 23x⁴ + 10x² + 4x - 3 = 0'
 
 
@@ -53,7 +53,7 @@ def sum_koef(koef_degree1: dict, koef_degree2: dict):
     for i in range((max_degree + 1), -1, -1):
         value = koef_degree1.get(i, 0) + koef_degree2.get(i, 0)
         if value != 0:
-            sum_koef[i] = koef_degree1.get(i, 0) + koef_degree2.get(i, 0)
+            sum_koef[i] = value
     return sum_koef
 
 def create_pretty_degree(sum_koef: dict):
