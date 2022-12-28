@@ -1,15 +1,19 @@
-while True:
-    try:
-        k1, k2 = map(int, input('Введите степени числа для первого и второго многочленов через пробел: ').split())
-        if k1 <= 0 or k2 <= 0:
-            print('Введите степени числа больше 0!')
-        else:
-            break
-    except:
-        print('Конвертация невозможна! Введите числа больше 0.')
+num_list = list(map(int, '1 2 3 5 8 15 23 38'.split()))
+new_list = [(i, i ** 2) for i in list(filter(lambda i: not i % 2, num_list))]
+print(new_list)
 
-x = k1+k2
-print(x)
+# while True:
+#     try:
+#         k1, k2 = map(int, input('Введите степени числа для первого и второго многочленов через пробел: ').split())
+#         if k1 <= 0 or k2 <= 0:
+#             print('Введите степени числа больше 0!')
+#         else:
+#             break
+#     except:
+#         print('Конвертация невозможна! Введите числа больше 0.')
+#
+# x = k1+k2
+# print(x)
 
 # def create_degree(degree):
 #     sym_dict = {1: "\u00B9", 2: "\u00B2", 3: "\u00B3", 4: "\u2074", 5: "\u2075", 6: "\u2076", 7: "\u2077", 8: "\u2078",

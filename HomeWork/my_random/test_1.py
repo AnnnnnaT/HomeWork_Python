@@ -3,10 +3,10 @@ import math
 
 def get_c():
     a = time.perf_counter()
-    b = float(str(a)[::-1])
-    c = a / float(str(a)[::-1])
+    #b = float(str(a)[::-1])
+    #c = a / float(str(a)[::-1])
    # c = abs(k * (math.sqrt(a) + math.sqrt(b) + math.sqrt(k)) / (math.log(a) * math.log(b) * math.log(k)))
-    return c
+    return a%1
 
 count_dict = dict()
 
